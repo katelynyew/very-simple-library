@@ -159,6 +159,7 @@ button:hover {
     border: none;
     padding: 15px;
     font-size: 0.7rem;
+    opacity: 70%;
 }
 
 dialog {
