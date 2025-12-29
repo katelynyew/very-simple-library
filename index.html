@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Library</title>
+    <script src="library.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="logo-img">
+                <img id="logo" src="img/logo.png" alt="logo">
+            </div>
+            <div class="side-menu">
+                <ul class="menu">
+                    <li><img src="img/book.svg" width="20px" alt="logo"><a href="#my-books">My Books</a></li>
+                    <li><img src="img/progress.svg"  width="20px" alt="logo"><a href="#my-books">Progress</a></li>
+                    <li><img src="img/search.svg"  width="20px" alt="logo"><a href="#my-books">Search</a></li>
+                </ul>
+                <ul class="others">
+                    <li><img src="img/settings.svg" width="20px" alt="logo"><a href="#my-books">Settings</a></li>
+                    <li><img src="img/log-out.svg" width="20px" alt="logo"><a href="#my-books">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>My books</h1>
+                <div class="action">
+                    <button class="add-btn">Add New Book</button>
+                    <button class="remove-btn">Remove Book</button>
+                </div>
+            </div>
+            <div class="display">
+                <div class="books">
+                    <h2>Reading</h2>
+                    <div class="card">
+                        <!-- <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150">
+                        <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150"> -->
+                    </div>
+                </div>
+                <div class="unread">
+                    <h2>To Read</h2>
+                    <div class="card">
+                        <!-- <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150">
+                        <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150"> -->
+                    </div>
+                </div>
+                <div class="read">
+                    <h2>Read</h2>
+                    <div class="card">
+                        <!-- <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150"> -->
+                        <!-- <img class="book" src="img/book1.jpg" alt="book1" width="100" height="150"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <dialog id="add-dialog">
+        <form class="add-form" method="dialog">
+            <h1>Add New Book</h1>
+            <div class="user-input">
+                    <label for="title">Enter the title of the book: </label>
+                    <input type="text" id="title" name="book-titles" required />
+                </div>
+                <div class="user-input">
+                    <label for="author">Enter the author of the book: </label>
+                    <input type="text" id="author" name="book-author" required />
+                </div>
+                <div class="user-input">
+                    <label for="pages">Enter the number of pages of the book: </label>
+                    <input type="number" id="pages" name="book-pages" required />
+                </div>
+                <div class="user-input">
+                    <label for="status">Enter the status of the book: </label>
+                    <select name="book-status" id="status" required>
+                        <option value="false" selected>Unread</option>
+                        <option value="true">Read</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <input type="submit" id="submit" value="Submit"/>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="remove-dialog">
+        <form class="remove-form" method="dialog">
+            <h1>Delete Book</h1>
+            <div class="user-input">
+                <label for="remove">Enter the title of the book: </label>
+                <input type="text" id="remove" required/>
+            </div>
+            <div class="action">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <input type="submit" id="delete" value="Delete"/>
+            </div>  
+        </form>
+    </dialog>
+</body>
+</html>
