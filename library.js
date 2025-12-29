@@ -16,8 +16,8 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary;
 }
 
-addBookToLibrary("hobbit", "me", 20, false);
-addBookToLibrary("yefw", "e", 220, true);
+addBookToLibrary("the hobbit", "me", 20, false);
+addBookToLibrary("attack on titan", "e", 220, true);
 console.log(myLibrary);
 
 ////////// add and remove button header  AND  dialog ui ////////////////////
@@ -84,12 +84,17 @@ const read = document.querySelector(".read").querySelector(".card");
 const unread = document.querySelector(".unread").querySelector(".card");
 
 function createBookCard(book) {
-        ////////////// image section /////////////
         const newBook = document.createElement("div");
         newBook.classList.add("new-book");
+        ///////////// title section ////////////
+        const title = document.createElement("p");
+        title.textContent = book.title.toUpperCase();
+        newBook.append(title);
+        ////////////// image section /////////////
+        
         const image = document.createElement("img");
         image.alt = book.title;
-        // image.src = "img/book1.jpg";
+        image.src = "img/book1.jpg";
         image.style.backgroundColor = "red";
         image.style.width = "100px";
         image.style.height = "100px";
