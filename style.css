@@ -5,6 +5,8 @@ body {
     height: 100%; /* Ensures the body and html take up full viewport height */
     margin: 0;
 }
+html, body { max-width: 100%; overflow-x: hidden; }
+* { outline: 1px solid rgba(255, 0, 0, 0.2); }
 .container {
     display: grid;
     grid-template-columns: 150px 1fr;
