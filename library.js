@@ -55,6 +55,8 @@ addForm.addEventListener("submit", (event) => {
     updateDisplay();
     addDialog.close();
     addForm.reset();
+    const srStatus = document.querySelector("#sr-status");
+    srStatus.textContent = "Book Successfully Added";
 });
 
 const removeDialog = document.getElementById("remove-dialog");
@@ -73,6 +75,9 @@ removeForm.addEventListener("submit", (event) => {
     updateDisplay();
     removeDialog.close();
     removeForm.reset();
+    const srStatus = document.querySelector("#sr-status");
+    srStatus.textContent = "Book Successfully Removed";
+
     return myLibrary;
 });
 
@@ -111,13 +116,13 @@ function createBookCard(book) {
         removeButton.textContent = "-";
         removeButton.addEventListener("click", () => {
             const id = book.id;
-            
-            console.log(id);
             const index = myLibrary.findIndex(book => book.id === id);
 
             myLibrary.splice(index, 1);
             console.log(myLibrary);
             updateDisplay();
+            const srStatus = document.querySelector("#sr-status");
+            srStatus.textContent = "Book Successfully Removed";
         });
         
 
@@ -126,9 +131,14 @@ function createBookCard(book) {
         readButton.addEventListener("click", () => {
             book.read = !book.read;
             updateDisplay();
+            
+            
         });
-        
-        readButton.textContent = getStatusText(book);
+        const readStatus = getStatusText(book);
+        readButton.textContent = readStatus;
+        const moveStatus = readStatus === "Unread" ? "Read" : "Unread";
+        const srStatus = document.querySelector("#sr-status");
+        srStatus.textContent = `Book Moved to ${moveStatus}`;
 
         bookButton.append(removeButton);
         bookButton.append(readButton);

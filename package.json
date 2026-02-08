@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "predeploy": "echo 'No build step required'",
+    "deploy": "gh-pages -d ."
+  }
+}
