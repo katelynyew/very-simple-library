@@ -1,16 +1,25 @@
 
 body {
-    font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100%; /* Ensures the body and html take up full viewport height */
-    margin: 0;
+      font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
-html, body { max-width: 100%; overflow-x: hidden; }
-* { outline: 1px solid rgba(255, 0, 0, 0.2); }
+/* Baseline: prevent overflow surprises on mobile */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
     display: grid;
     grid-template-columns: 150px 1fr;
     gap: 30px;
+    width: 100%;
+
    
 }
 #logo {
@@ -221,4 +230,127 @@ option {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+/* -------------------------
+   Responsive layout (mobile)
+   ------------------------- */
+
+@media (max-width: 768px) {
+  /* Stack sidebar + content */
+  .container {
+    grid-template-columns: 1fr;
+    
+  }
+
+  /* Sidebar becomes a normal block so it doesn't squeeze content */
+  .nav {
+    box-shadow: none;
+    
+  }
+
+  .logo-img {
+    height: 150px;
+  }
+  .side-menu {
+    height: 0;
+  }
+  /* Reduce horizontal padding that causes overflow */
+  .header,
+  .display {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .action {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Make primary actions fit on small screens */
+  button, #submit, #delete {
+    height: auto;
+    min-height: 44px; /* thumb-friendly */
+    padding: 12px 16px;
+  }
+
+  /* Cards: remove huge side padding/gaps */
+  .card {
+    gap: 26px;
+    padding: 16px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  /* New-book column shouldn’t force width */
+  .new-book {
+    width: 90px;
+    height: auto;
+  }
+
+  .new-book p {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  /* Book action buttons shouldn’t be 10% height */
+  .book-action {
+    height: auto;
+  }
+
+  .book-action button {
+    height: auto;
+    min-height: 26px;
+    width: auto;
+
+  }
+
+  /* Dialogs should fit viewport on mobile */
+  dialog {
+    width: min(92vw, 520px);
+    height: auto;
+    padding: 16px;
+  }
+
+  .user-input {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  label {
+    grid-column: auto;
+  }
+
+  .user-input input, select {
+    grid-column: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  #pages {
+    width: 100%;
+  }
+
+  #remove-dialog .action {
+    padding-top: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Keep your existing desktop spacing, but ensure cards don’t overflow */
+  .card {
+    max-width: 100%;
+  }
 }
